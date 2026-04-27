@@ -1,5 +1,5 @@
 import React from "react";
-import  type { TaskStatus } from "../../types";
+import type { TaskStatus } from "../../types";
 import type { TaskFilterProps } from "../../types";
 
 export const TaskFilter: React.FC<TaskFilterProps> = ({
@@ -8,18 +8,30 @@ export const TaskFilter: React.FC<TaskFilterProps> = ({
     const [status, setStatus] = React.useState<TaskStatus | "">("");
     const [priority, setPriority] = React.useState<"low" | "medium" | "high" | "">("");
 
+    const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const newStatus = e.target.value as TaskStatus | "";
+        setStatus(newStatus);
+
+        onFilterChange({
+            status: newStatus || undefined,
+            priority: priority || undefined,
+        });
+    }
+        const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+            const newPriority = e.target.value as "low" | "medium" | "high" | "";
+            setPriority(newPriority);
+
+            onFilterChange({
+                status: status || undefined,
+                priority: newPriority || undefined,
+            });
+        }
+    
+
     return (
         <div>
             <select
-                onChange={(e) => {
-                    const newStatus = e.target.value as TaskStatus | "";
-                    setStatus(newStatus);
-
-                    onFilterChange({
-                        status: newStatus || undefined,
-                        priority: priority || undefined,
-                    });
-                }}
+                onChange={handleStatusChange}
             >
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
@@ -27,15 +39,8 @@ export const TaskFilter: React.FC<TaskFilterProps> = ({
                 <option value="completed">Completed</option>
             </select>
             <select
-                onChange={(e) => {
-                    const newPriority = e.target.value as "low" | "medium" | "high" | "";
-                    setPriority(newPriority);
+                onChange={handlePriorityChange}
 
-                    onFilterChange({
-                        status: status || undefined,
-                        priority: newPriority || undefined,
-                    });
-                }}
             >
                 <option value="">All Priority</option>
                 <option value="low">Low</option>

@@ -35,3 +35,9 @@ export interface TaskFilters {
 export interface TaskFilterProps {
     onFilterChange: (filters: TaskFilters) => void;
 }
+
+export interface Filters {
+    status?: Task["status"];
+    priority?: Task["priority"];
+    search?: string;
+}
