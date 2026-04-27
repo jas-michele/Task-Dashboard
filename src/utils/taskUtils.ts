@@ -11,15 +11,15 @@ function filterTasks(tasks: Task[], filters: Filters): Task[] {
             return false;
         }
 
-        if ( 
-            filters.search && 
+        if (
+            filters.search &&
             !task.title.toLocaleLowerCase().includes(filters.search.toLowerCase())
         ) {
             return false;
         }
 
         return true;
-    } )
+    })
 }
 
 export default filterTasks;
