@@ -9,10 +9,8 @@ export const TaskList: React.FC<TaskListProps> = ({
 }) => {
     return (
         <>
-
             {tasks.map((task) => {
                 return (
-
                     <TaskItem
                         key={task.id}
                         task={task}
@@ -21,8 +19,6 @@ export const TaskList: React.FC<TaskListProps> = ({
                     />
                 )
             })}
-                </>
-
+        </>
     )
-
 }
