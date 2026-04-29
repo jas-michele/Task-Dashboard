@@ -10,7 +10,8 @@ export interface Task {
 }
 
 export interface TaskFormProps {
-    onAddTask: (task: Task) => void;
+    onSubmit: (task: Task) => void;
+    initialData?: Task | null;
 }
 
 export interface TaskListProps {
