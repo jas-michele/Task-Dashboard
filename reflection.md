@@ -4,4 +4,8 @@ I used React functional components with hooks like useState and useEffect to man
 
 ## Challenges & How I Solved Them 
 
-One challenge was 
+One challenge was handling edit vs create logic in the form. I solved it by passing intialData as a prop and syncing it with local state using useEffect.
+
+## Component Composition & State Management 
+
+I separted the app into reusable components. 
